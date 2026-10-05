@@ -1,0 +1,31 @@
+{
+  "name": "dudulove-memory",
+  "version": "0.1.0",
+  "description": "Self-hosted, identity-scoped memory for personal agents and frontends",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "mcp": "node mcp-stdio.js",
+    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "check": "node scripts/check.js",
+    "pack:release": "node scripts/pack.js",
+    "example:http": "node examples/http-agent.mjs"
+  },
+  "overrides": {
+    "qs": "6.16.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.27.1",
+    "@seald-io/nedb": "4.1.2",
+    "cors": "2.8.6",
+    "express": "4.22.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VITASID57/dudulove-memory.git"
+  }
+}

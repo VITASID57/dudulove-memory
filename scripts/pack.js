@@ -1,0 +1,14 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {execFileSync}=require('node:child_process');
+const {root,files}=require('./files');
+execFileSync(process.execPath,[path.join(__dirname,'check.js')],{stdio:'inherit',windowsHide:true});
+const names=files(),pkg=require('../package.json'),out=path.join(root,'artifacts');
+fs.mkdirSync(out,{recursive:true});
+const archive=path.join(out,`${pkg.name}-${pkg.version}.tgz`);
+execFileSync('tar',['-czf',archive,'-C',root,'--',...names],{stdio:'inherit',windowsHide:true});
+const entries=execFileSync('tar',['-tzf',archive],{encoding:'utf8',windowsHide:true}).trim().split(/\r?\n/).map(name=>name.replace(/^\.\//,''));
+if(entries.length!==names.length||entries.some(name=>!names.includes(name)))throw new Error('Archive contents differ from approved file list');
+const sha256=crypto.createHash('sha256').update(fs.readFileSync(archive)).digest('hex');
+fs.writeFileSync(archive+'.sha256',`${sha256}  ${path.basename(archive)}\n`);
+fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify({name:pkg.name,version:pkg.version,sha256,files:names},null,2)+'\n');
+console.log(JSON.stringify({archive,files:names.length,sha256}));

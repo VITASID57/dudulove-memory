@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DuduLove · 记忆</title><link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<section id="login" class="login" hidden><div class="login-card"><span class="eyebrow">DUDULOVE MEMORY</span><h1>让记忆有个家。</h1><p id="login-hint"></p><form id="login-form"><label>管理密码<input name="password" type="password" minlength="8" maxlength="256" required autocomplete="current-password"></label><button class="primary">进入记忆库</button></form><p class="muted">资料保存在你自己的服务器。每位身份都有独立的记忆空间。</p></div></section>
+<div id="workspace" hidden>
+<header><div class="brand"><span class="mark">d.</span><div><strong>DuduLove</strong><small>记忆，一起慢慢积累。</small></div></div><div class="header-actions"><button id="settings">设置</button><button id="logout" class="quiet">退出</button></div></header>
+<main><div class="topline"><div><span class="eyebrow">YOUR MEMORY SPACE</span><h1>记得，也向前走。</h1></div><div class="resident-tools"><label>当前资料<select id="resident"><option value="">全部资料</option></select></label><button id="add-resident">＋ 记忆身份</button><button id="resident-tools">身份与连接</button></div></div>
+<nav aria-label="资料导航"><button data-tab="memories" class="selected">记忆库</button><button data-tab="activities">活动记录</button><button data-tab="briefing">近期简报</button></nav>
+<section id="content" aria-live="polite"></section>
+<footer>独立长期记忆 · 自由记录碎片 · 共享世界与近况 <span>DuduLove Memory 0.1.0</span></footer></main></div>
+<dialog id="dialog"><div class="dialog-heading"><h2 id="dialog-title"></h2><button id="close-dialog" aria-label="关闭">✕</button></div><div id="dialog-content"></div></dialog>
+<div id="toast" role="status" hidden></div>
+<script type="module" src="/app.js"></script></body></html>

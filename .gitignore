@@ -1,0 +1,14 @@
+node_modules/
+data/
+.env
+.env.*
+!.env.example
+output/
+artifacts/
+*.db
+*.db~
+*.log
+*.tgz
+*.zip
+.DS_Store
+.playwright-cli/
