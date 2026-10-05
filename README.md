@@ -102,6 +102,7 @@ DuduLove 可以在完全不配置模型服务的情况下完成：
 ## 使用与接入
 
 - [日常管理、分类与授权](docs/usage.md)
+- [Resident 跨 Surface 接入指南](docs/surfaces.md)
 - [HTTP 与 MCP 接入](docs/connection.md)
 - [给接入 Agent 的操作说明](docs/agent-guide.md)
 - [客户端连接与身份选择接口](docs/client-api.md)
