@@ -51,6 +51,16 @@ Resident 的读取权限在每次操作时重新解析，因此：
 
 这让同一个身份可以跨不同客户端继续使用，而不需要把每个前端当成新的记忆主人。
 
+## Surface 与 Runtime 的边界
+
+DuduLove 负责 Resident 的长期连续性，但不要求接管每个客户端的全部运行状态。
+
+聊天窗口、Coding Agent、个人工作台等 Surface 可以拥有自己的 session、工具和临时缓存；终端输出、浏览器状态、文件中间态、凭据和任务日志等 Runtime 数据通常应留在执行环境。只有真正值得跨会话继续使用的结果，才通过 activity、`pulse`、`ops` 或 Memory Admission 进入长期体系。
+
+外部平台如果也提供自己的自动记忆，建议把它视为 Surface-local cache 或待审核候选，而不是未经确认就成为与 DuduLove 同等权威的长期真相源。
+
+具体接入流程与检查项见 [Resident 跨 Surface 接入指南](surfaces.md)。
+
 ## 四层资料结构
 
 主要资料层保持少而稳定：
